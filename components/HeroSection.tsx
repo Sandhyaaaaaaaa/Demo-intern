@@ -19,7 +19,7 @@ export default function HeroSection() {
   }
 
   return (
-    <section className="relative h-screen flex items-center justify-center bg-dark-900 overflow-hidden">
+    <section className="relative h-screen flex items-center justify-center bg-gray-900 overflow-hidden">
       {/* Full-bleed background video */}
       <div className="absolute inset-0">
         <video
@@ -28,17 +28,13 @@ export default function HeroSection() {
           loop
           muted
           playsInline
-          poster="/hero-poster.svg"
+          onError={(e) => console.log('Video error:', e)}
+          onLoadStart={() => console.log('Video loading started')}
+          onCanPlay={() => console.log('Video can play')}
         >
           <source src="/11041434-hd_1920_1080_30fps.mp4" type="video/mp4" />
           {/* Fallback for browsers that don't support video */}
-          <Image
-            src="/hero-poster.svg"
-            alt="Hero background"
-            fill
-            className="object-cover"
-            priority
-          />
+          <div className="absolute inset-0 bg-gradient-to-br from-indigo-900 via-purple-900 to-pink-900" />
         </video>
         {/* Dark gradient overlay for text legibility */}
         <div className="absolute inset-0 bg-gradient-to-b from-black/60 to-black/20" />
